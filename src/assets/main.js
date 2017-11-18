@@ -52,8 +52,8 @@ function validateInput(input) {
 
 function getResults(guess) {
     let correct = 0;
-    let results = `<div class="row"><span class="col-md-6">${input}</span><div class="col-md-6">`
-    guess.split().forEach(element, i => {
+    let results = `<div class="row"><span class="col-md-6">${guess}</span><div class="col-md-6">`
+    guess.split().forEach((element, i) => {
         if (element === answer[i] ) {
             results += `<span class="glyphicon glyphicon-ok"></span>`;
             correct++;
