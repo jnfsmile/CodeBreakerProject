@@ -26,13 +26,19 @@ function guess() {
 }
 
 function setHiddenFields() {
-    answer = Math.floor(Math.random()*10000);
-    answer = answer.toString();
-    while (answer.length < 4) {
-        answer = "0" + answer;
+    let gen = Math.floor(Math.random()*10000).toString();
+    while (gen.length < 4) {
+        gen = "0" + gen;
     }
 
-    attempt = 0;
+    answer.value = gen;
+
+    attempt.value = 0;
+}
+
+function setMessage(msg) {
+    let msgDiv = document.getElementById('message');
+    msgDiv.innerHTML = msg;
 }
 
 function validateInput(input) {
