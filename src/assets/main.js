@@ -7,7 +7,7 @@ function guess() {
         setHiddenFields();
     }
     if (validateInput(input.value)) {
-        attempt++;
+        attempt.value = attempt.value + 1;
     } else {
         return false;
     }
@@ -54,11 +54,11 @@ function getResults(guess) {
     let correct = 0;
     let results = `<div class="row"><span class="col-md-6">${guess}</span><div class="col-md-6">`
     guess.split().forEach((element, i) => {
-        if (element === answer[i] ) {
+        if (element === answer.value[i] ) {
             results += `<span class="glyphicon glyphicon-ok"></span>`;
             correct++;
         }
-        else if (answer.contains(element) ) results += `<span class="glyphicon glyphicon-transfer"></span>`
+        else if (answer.value.indexOf(element) >= 0 ) results += `<span class="glyphicon glyphicon-transfer"></span>`
         else results += `<span class="glyphicon glyphicon-remove"></span>` 
     });
     results += `</div></div>`;
