@@ -3,7 +3,7 @@ let attempt = document.getElementById('attempt');
 
 function guess() {
     let input = document.getElementById('user-guess');
-    if (!answer || !attempt) {
+    if (!answer.value || !attempt.value) {
         setHiddenFields();
     }
     if (validateInput(input.value)) {
@@ -13,11 +13,11 @@ function guess() {
     }
 
     if (getResults(input.value)) {
-        setMessage("You Win! :)")
+        setMessage("You Win!")
         showAnswer(true);
         showReplay();
     } else if (attempt >= 10) {
-        setMessage("You Lose! :(")
+        setMessage("You Lose!")
         showAnswer(false);
         showReplay();
     } else {
@@ -53,7 +53,7 @@ function validateInput(input) {
 function getResults(guess) {
     let correct = 0;
     let results = `<div class="row"><span class="col-md-6">${guess}</span><div class="col-md-6">`
-    guess.split().forEach((element, i) => {
+    guess.split("").forEach((element, i) => {
         if (element === answer.value[i] ) {
             results += `<span class="glyphicon glyphicon-ok"></span>`;
             correct++;
@@ -63,7 +63,7 @@ function getResults(guess) {
     });
     results += `</div></div>`;
     let resultsDiv = document.getElementById('results');
-    resultsDiv.innerHTML = results;
+    resultsDiv.innerHTML += results;
     return correct === 4;
 }
 
