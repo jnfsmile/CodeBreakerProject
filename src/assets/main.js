@@ -7,17 +7,17 @@ function guess() {
         setHiddenFields();
     }
     if (validateInput(input.value)) {
-        attempt.value = attempt.value + 1;
+        attempt.value = parseInt(attempt.value) + 1;
     } else {
         return false;
     }
 
     if (getResults(input.value)) {
-        setMessage("You Win!")
+        setMessage("You Win! :)")
         showAnswer(true);
         showReplay();
-    } else if (attempt >= 10) {
-        setMessage("You Lose!")
+    } else if (attempt.value >= 10) {
+        setMessage("You Lose! :(")
         showAnswer(false);
         showReplay();
     } else {
